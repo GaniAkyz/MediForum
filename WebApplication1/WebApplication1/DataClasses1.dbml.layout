@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="4c21d97f-f475-4e86-82f8-d72c88321487" absoluteBounds="3.5, 3.875, 2, 1.9631982421874992">
+      <DataClassMoniker Name="/DataClasses1DataContext/tbl_baslik" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67bacbb8-af75-48c5-8e6a-52b0c55fc318" absoluteBounds="3.515, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4718abd2-33c4-46c5-ae1f-7f9bf7144477" absoluteBounds="6.25, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DataClasses1DataContext/tbl_mesaj" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d62931f-bc3c-44b8-bd29-3301193c7598" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b886b4c-7b5a-4a1e-af5f-8904eb58902a" absoluteBounds="0.75, 1.125, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/DataClasses1DataContext/tbl_kategori" />
+      <nestedChildShapes>
+        <elementListCompartment Id="efbaa30e-7b78-4330-b6da-d10c2b93c565" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e0ce0a8e-2896-4681-b787-efbc6423804a" absoluteBounds="0.75, 3.625, 2, 2.347801106770834">
+      <DataClassMoniker Name="/DataClasses1DataContext/tbl_kullanici" />
+      <nestedChildShapes>
+        <elementListCompartment Id="399d412b-7604-424d-8965-e85f17e2d459" absoluteBounds="0.765, 4.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3dc68839-ba13-4e62-9c83-5c1dacfa04f4" absoluteBounds="6.25, 4.125, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/DataClasses1DataContext/tbl_kullaniciFavoriBasliklari" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5f623856-bd2b-42e6-8fb4-c6921a9ae75c" absoluteBounds="6.265, 4.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.5 : 3.875); (4.5 : 1.82774983723958); (6.25 : 1.82774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/tbl_baslik/tbl_baslik_tbl_mesaj" />
+      <nodes>
+        <classShapeMoniker Id="4c21d97f-f475-4e86-82f8-d72c88321487" />
+        <classShapeMoniker Id="4718abd2-33c4-46c5-ae1f-7f9bf7144477" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.47637491861979); (3.9687475 : 1.47637491861979); (3.9687475 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/tbl_kategori/tbl_kategori_tbl_baslik" />
+      <nodes>
+        <classShapeMoniker Id="3b886b4c-7b5a-4a1e-af5f-8904eb58902a" />
+        <classShapeMoniker Id="4c21d97f-f475-4e86-82f8-d72c88321487" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.85659912109375); (3.5 : 4.85659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/tbl_kullanici/tbl_kullanici_tbl_baslik" />
+      <nodes>
+        <classShapeMoniker Id="e0ce0a8e-2896-4681-b787-efbc6423804a" />
+        <classShapeMoniker Id="4c21d97f-f475-4e86-82f8-d72c88321487" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.625); (3.125 : 3.25); (3.125 : 2.39787675585937); (3.88541416666667 : 2.39787675585937 : JumpStart); (4.05208083333333 : 2.39787675585937 : JumpEnd); (4.41666666666667 : 2.39787675585937 : JumpStart); (4.58333333333333 : 2.39787675585937 : JumpEnd); (6.25 : 2.39787675585937)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/tbl_kullanici/tbl_kullanici_tbl_mesaj" />
+      <nodes>
+        <classShapeMoniker Id="e0ce0a8e-2896-4681-b787-efbc6423804a" />
+        <classShapeMoniker Id="4718abd2-33c4-46c5-ae1f-7f9bf7144477" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.81814697265625); (6.25 : 4.81814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/tbl_baslik/tbl_baslik_tbl_kullaniciFavoriBasliklari" />
+      <nodes>
+        <classShapeMoniker Id="4c21d97f-f475-4e86-82f8-d72c88321487" />
+        <classShapeMoniker Id="3dc68839-ba13-4e62-9c83-5c1dacfa04f4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.93674967447917); (7.25 : 5.93674967447917); (7.25 : 5.5112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/tbl_kullanici/tbl_kullanici_tbl_kullaniciFavoriBasliklari" />
+      <nodes>
+        <classShapeMoniker Id="e0ce0a8e-2896-4681-b787-efbc6423804a" />
+        <classShapeMoniker Id="3dc68839-ba13-4e62-9c83-5c1dacfa04f4" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

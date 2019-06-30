@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GanininForumOdevi" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=server.apphic.com;Initial Catalog=GanininForumOdevi;Persist Security Info=True;User ID=mspcontrol_sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GanininForumOdeviConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_baslik" Member="tbl_basliks">
+    <Type Name="tbl_baslik">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Isim" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="EklenmeTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="KategoriId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KullaniciId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Onay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_baslik_tbl_mesaj" Member="tbl_mesajs" ThisKey="Id" OtherKey="BaslikId" Type="tbl_mesaj" />
+      <Association Name="tbl_baslik_tbl_kullaniciFavoriBasliklari" Member="tbl_kullaniciFavoriBasliklaris" ThisKey="Id" OtherKey="BaslikId" Type="tbl_kullaniciFavoriBasliklari" />
+      <Association Name="tbl_kategori_tbl_baslik" Member="tbl_kategori" ThisKey="KategoriId" OtherKey="Id" Type="tbl_kategori" IsForeignKey="true" />
+      <Association Name="tbl_kullanici_tbl_baslik" Member="tbl_kullanici" ThisKey="KullaniciId" OtherKey="Id" Type="tbl_kullanici" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_mesaj" Member="tbl_mesajs">
+    <Type Name="tbl_mesaj">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BaslikId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KullanıcıId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EklenmeTarihi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MesajYazısı" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="BegeniSayisi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BegenilmemeSayisi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_baslik_tbl_mesaj" Member="tbl_baslik" ThisKey="BaslikId" OtherKey="Id" Type="tbl_baslik" IsForeignKey="true" />
+      <Association Name="tbl_kullanici_tbl_mesaj" Member="tbl_kullanici" ThisKey="KullanıcıId" OtherKey="Id" Type="tbl_kullanici" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_kategori" Member="tbl_kategoris">
+    <Type Name="tbl_kategori">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Isim" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Aktif" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_kategori_tbl_baslik" Member="tbl_basliks" ThisKey="Id" OtherKey="KategoriId" Type="tbl_baslik" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_kullanici" Member="tbl_kullanicis">
+    <Type Name="tbl_kullanici">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Isim" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Soyisim" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Eposta" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sifre" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="FakulteIsim" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Hakkinda" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DogumTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tbl_kullanici_tbl_baslik" Member="tbl_basliks" ThisKey="Id" OtherKey="KullaniciId" Type="tbl_baslik" />
+      <Association Name="tbl_kullanici_tbl_mesaj" Member="tbl_mesajs" ThisKey="Id" OtherKey="KullanıcıId" Type="tbl_mesaj" />
+      <Association Name="tbl_kullanici_tbl_kullaniciFavoriBasliklari" Member="tbl_kullaniciFavoriBasliklaris" ThisKey="Id" OtherKey="KullaniciId" Type="tbl_kullaniciFavoriBasliklari" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_kullaniciFavoriBasliklari" Member="tbl_kullaniciFavoriBasliklaris">
+    <Type Name="tbl_kullaniciFavoriBasliklari">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="KullaniciId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BaslikId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbl_baslik_tbl_kullaniciFavoriBasliklari" Member="tbl_baslik" ThisKey="BaslikId" OtherKey="Id" Type="tbl_baslik" IsForeignKey="true" />
+      <Association Name="tbl_kullanici_tbl_kullaniciFavoriBasliklari" Member="tbl_kullanici" ThisKey="KullaniciId" OtherKey="Id" Type="tbl_kullanici" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

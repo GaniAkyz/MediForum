@@ -1,0 +1,164 @@
+﻿@model WebApplication1.Models.HomeModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive admin dashboard and web application ui kit. Pre designed block of data to use in your web app.">
+    <meta name="keywords" content="widget, list, table, comments, popular, recent">
+    <title>List Widgets &mdash; TheAdmin</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,300i" rel="stylesheet">
+    <!-- Styles -->
+    <link href="css/core.min.css" rel="stylesheet">
+    <link href="css/app.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+    <link rel="icon" href="../assets/img/favicon.png">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner-dots">
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <!-- END Sidebar -->
+    <!-- Topbar -->
+    <header class="topbar">
+
+        <div class="topbar-left">
+            <header class="sidebar-header">
+                <a class="logo-icon" href="../index.html"><img src="img/logo-icon-light.png" alt="logo icon"></a>
+                <span class="logo">
+                    <a href="../index.html"><img src="img/logo-light.png" alt="logo"></a>
+                </span>
+            </header>
+
+            <div class="topbar-divider d-none d-md-block"></div>
+            <nav>
+                <a style="padding-left:5px;padding-right:5px;" href="/html/">Ana Sayfa</a> |
+                <a style="padding-left:5px;padding-right:5px;" href="/js/">İletişim</a> |
+                <a style="padding-left:5px;padding-right:5px;" href="@Url.Action("Hakkimizda", "Home")">Hakkımızda</a>
+            </nav>
+
+        </div>
+        @if (String.IsNullOrEmpty(Model.Kullanici))
+        {
+            <div class="topbar-right">
+                <a style="padding-left:5px;padding-right:5px;" class="float-right" href="@Url.Action("Login","Account")">Giriş Yap</a>
+                <a style="padding-left:5px;padding-right:5px;" class="float-right" href="@Url.Action("Register","Account")">Üye Ol</a>
+            </div>
+        }
+        else
+        {
+            <div class="topbar-right">
+                <a style="padding-left:5px;padding-right:5px;" class="float-right" href="@Url.Action("Login","Account")">Hoşgeldiniz @Model.Kullanici</a>
+            </div>
+        }
+
+    </header>
+    <!-- END Topbar -->
+    <!-- Main container -->
+    <main class="main-container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card">
+                        <h5 class="card-title"><strong>En Yeni Başlıklar</strong></h5>
+                        <div class="media-list media-list-hover media-list-divided">
+                            @foreach(var item in Model.Basliklar)
+                            {
+                                <a class="media media-single" href="#">
+                                <img class="w-40px" src="img/letter.png">
+                                <div class="media-body">
+                                    <h6>@item.Baslik (@item.Tarihi, <strong style="font-weight:500;">@item.MesajSayisi Adet</strong> Mesaj)</h6>
+                                    <small class="text-fader">@item.Kullanici</small>
+                                </div>
+                            </a>
+                            }
+                        </div>
+                    </div>
+                    <div style="width:100%;">
+                        <a href="@Url.Action("Basliklar","Baslik")" target="_self" style="float:right; background-color:lightblue;padding:5px;color:black;font-size:14px;">Tüm Başlıklar</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3">
+                    <div class="card">
+                        <h5 class="card-title"><strong>Kategoriler</strong></h5>
+                        <div class="media-list media-list-hover media-list-divided">
+                            @foreach (var item in Model.Kategoriler)
+                            {
+                                <a class="media media-single" href="#">
+                                    <span class="title">@item.KategoriAdi</span>
+                                    <span class="badge badge-pill badge-secondary">@item.BaslikSayisi</span>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4">
+                    <div class="card">
+                        <h5 class="card-title"><strong>En Yeni Mesajlar</strong></h5>
+                        <div class="media-list media-list-hover media-list-divided">
+                            @foreach (var item in Model.Mesajlar)
+                            {
+                                <div class="media">
+                                    <img class="avatar" src="img/chat.png">
+                                    <div class="media-body">
+                                        <p><strong>@item.Kullanici</strong> <time class="float-right" datetime="2017-07-14 20:00">@item.Tarih</time></p>
+                                        <p>@item.Mesaj</p>
+                                        <p><strong>@item.Baslik</strong></p>
+                                        <div class="media-block-actions">
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div><!--/.main-content -->
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-center text-md-left">Tüm Hakları Saklıdır © 2019.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Hakkımızda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">İletişim</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- END Footer -->
+    </main>
+    <!-- END Main container -->
+    <!-- Global quickview -->
+    <!-- END Global quickview -->
+    <!-- Scripts -->
+    <script src="js/core.min.js"></script>
+    <script src="js/app.min.js"></script>
+</body>
+</html>
